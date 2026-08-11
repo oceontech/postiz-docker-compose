@@ -1,6 +1,12 @@
 services:
   postiz:
-    image: ghcr.io/gitroomhq/postiz-app:latest
+    # Imagem própria (fork em oceontech/postiz-app), não a oficial :latest —
+    # duas razões: (1) remove pages_manage_engagement/instagram_business_manage_comments
+    # dos providers do Facebook/Instagram, permissões sensíveis que exigiriam
+    # Revisão do Aplicativo da Meta e que o Media Hub nunca usa; (2) fixa uma
+    # versão específica em vez de :latest, então uma atualização só acontece
+    # quando a gente decide e reconstrói. Ver PLANO-POSTIZ-MULTIAGENCIA.md.
+    image: ghcr.io/oceontech/postiz-app:mediahub-latest
     restart: always
     environment:
       # === Required Settings
